@@ -1,7 +1,5 @@
 {
   "startUrl": "https://www.kraken.com",
   "apiUrl": "https://api.kraken.com/0/public",
-  "getCurrencyNamePath": "/Assets",
-  "addLogPath": "/test/put/log",
-  "addSs": "/test/put/attachment"
+  "getCurrencyNamePath": "/Assets"
 }

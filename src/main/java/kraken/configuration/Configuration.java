@@ -6,7 +6,6 @@ import aquality.selenium.core.utilities.JsonSettingsFile;
 public class Configuration {
 
     static JsonSettingsFile jsonSettingsFile = new JsonSettingsFile("config.json");
-    static ISettingsFile environment = new JsonSettingsFile("settings.json");
 
     public static String startUrl = jsonSettingsFile.getValue("/startUrl").toString();
     public static String apiUrl = jsonSettingsFile.getValue("/apiUrl").toString();
