@@ -2,14 +2,17 @@ package requests;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import kraken.configuration.Configuration;
 import utilities.RandomUtils;
+import utilities.TestData;
 
 import java.util.*;
 
 public class Requests {
-    public static void main(String[] args) {
-        String baseUri = "https://api.kraken.com/0/public";
-        String endpoint = "/Assets";
+
+    public static String getRandomCrypto(){
+        String baseUri = Configuration.apiUrl;
+        String endpoint = TestData.getStringValue("cryptoListEndpoint");
 
         RestAssured.baseURI = baseUri;
         Response response = RestAssured
@@ -22,13 +25,12 @@ public class Requests {
             Map<String, Object> resultObject = response.jsonPath().getMap("result");
             List<String> resultKeys = new ArrayList<>(resultObject.keySet());
 
-            String randomKey = resultKeys.get(RandomUtils.getRandomNumber(0, resultKeys.size()-1));
-            System.out.println("Random Key: " + randomKey);
+            return resultKeys.get(RandomUtils.getRandomNumber(0, resultKeys.size()-1));
         } else {
-            System.out.println("Request failed with status code: " + response.statusCode());
+            throw new IllegalArgumentException("Request failed with status code: " + response.statusCode());
         }
-
-
-
     }
+
+
+
 }

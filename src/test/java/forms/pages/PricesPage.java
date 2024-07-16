@@ -9,10 +9,12 @@ public class PricesPage extends Form {
     public PricesPage() { super(By.xpath("//div[@id = 'kraken-tabpanel-0']"), "Top screen panel"); }
 
     private final ITextBox searchCurrencyInput = getElementFactory().getTextBox(By.xpath("//input[contains(@placeholder, 'Search all')]"), "Search all cryptocurrencies input");
-    private final IButton currencyRow = getElementFactory().getButton(By.xpath("//a[contains(@class, 'OCEAN')]"), "Result currency row");
+    String currencyRowXpath = "//a[contains(@class, '%s')]";
 
-    public void goToGivenCurrency(){
-        searchCurrencyInput.clearAndType("OCEAN");
+    public void goToGivenCurrency(String cryptoName){
+        IButton currencyRow = getElementFactory().getButton(By.xpath(String.format(currencyRowXpath, cryptoName)), "Result currency row");
+
+        searchCurrencyInput.clearAndType(cryptoName);
         currencyRow.state().waitForClickable();
         currencyRow.click();
     }

@@ -1,17 +1,3 @@
 {
-  "variant": 2,
-  "user": "login",
-  "password": "password",
-  "urlStart": "http://",
-  "parameter": "token",
-  "expectedText": "Version: 2",
-  "projectName": "Nexage",
-  "successCode": 200,
-  "stringSize": 10,
-  "tabNumbers":{
-    "defaultTab": 0,
-    "addProjectTab": 1
-  },
-  "resultsPerPage": 20,
-  "contentType": "image/png"
+  "cryptoListEndpoint": "/Assets"
 }

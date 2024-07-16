@@ -1,6 +1,7 @@
 package forms.pages;
 
 import aquality.selenium.elements.interfaces.IButton;
+import aquality.selenium.elements.interfaces.ILabel;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
@@ -11,6 +12,7 @@ public class MainKrakenPage extends Form {
     }
 
     private final IButton acceptCookiesButton = getElementFactory().getButton(By.xpath("//div[contains(@aria-label, 'Privacy')]//button[contains(text(), 'Accept')]"), "Accept cookies button");
+    private final ILabel cookiesContainer = getElementFactory().getLabel(By.xpath("//div[contains(@aria-label, 'Privacy')]"), "Cookies form container");
     private final IButton pricesHeaderButton = getElementFactory().getButton(By.xpath("//li[@data-testid = 'top-nav-Prices']"), "Prices header button");
 
     public void clickPricesHeaderButton() {
@@ -20,6 +22,9 @@ public class MainKrakenPage extends Form {
     public void acceptCookies(){
         acceptCookiesButton.state().waitForClickable();
         acceptCookiesButton.click();
+
+        cookiesContainer.state().waitForNotDisplayed();
+
     }
 
 }

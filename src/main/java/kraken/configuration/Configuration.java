@@ -9,4 +9,5 @@ public class Configuration {
     static ISettingsFile environment = new JsonSettingsFile("settings.json");
 
     public static String startUrl = jsonSettingsFile.getValue("/startUrl").toString();
+    public static String apiUrl = jsonSettingsFile.getValue("/apiUrl").toString();
 }
