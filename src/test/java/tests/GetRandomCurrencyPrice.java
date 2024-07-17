@@ -9,21 +9,21 @@ import org.testng.annotations.Test;
 import requests.Requests;
 import utilities.TestData;
 
-public class GetRandomCurrencyPrice extends BaseTest{
+public class GetRandomCurrencyPrice extends BaseTest {
 
     String currencyName;
     String currencyToCompare;
     Double priceValue;
 
     @BeforeTest
-    public void getValues(){
+    public void getValues() {
         currencyName = Requests.getRandomCrypto();
         currencyToCompare = TestData.getStringValue("currencyToCompare");
         priceValue = Requests.getPriceValue(currencyName, currencyToCompare);
     }
 
     @Test
-    public void verifyCurrencyPrice(){
+    public void verifyCurrencyPrice() {
         MainKrakenPage mainKrakenPage = new MainKrakenPage();
         mainKrakenPage.acceptCookies();
 
@@ -39,9 +39,6 @@ public class GetRandomCurrencyPrice extends BaseTest{
         double lowestPrice = currencyPricePage.getLowestPriceValue();
         double highestPrice = currencyPricePage.getHighestPriceValue();
 
-        boolean isPriceCorrect = priceValue <= highestPrice && priceValue >= lowestPrice;
-
-        Assert.assertTrue(isPriceCorrect, "The price is not between the minimum and maximum price values for today ("+ priceValue + " Is not between " + lowestPrice + " and " + highestPrice+ " for " + currencyName + ")");
-
+        Assertions.verifyPrice(lowestPrice, highestPrice, priceValue);
     }
 }
