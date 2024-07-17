@@ -9,6 +9,7 @@ public class MainKrakenPage extends Form {
 
     public MainKrakenPage() {
         super(By.xpath("//div[@data-testid = 'paragraph--hero_growth']"), "Invest in your future Div");
+        getElementFactory().getLabel(By.xpath("//div[@data-testid = 'paragraph--hero_growth']"), "Invest in your future Div").state().waitForDisplayed();
     }
 
     private final IButton acceptCookiesButton = getElementFactory().getButton(By.xpath("//div[contains(@aria-label, 'Privacy')]//button[contains(text(), 'Accept')]"), "Accept cookies button");
@@ -19,7 +20,8 @@ public class MainKrakenPage extends Form {
         pricesHeaderButton.click();
     }
 
-    public void acceptCookies(){
+    public void acceptCookies() {
+        cookiesContainer.state().waitForDisplayed();
         acceptCookiesButton.state().waitForClickable();
         acceptCookiesButton.click();
 
