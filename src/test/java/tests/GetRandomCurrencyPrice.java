@@ -1,5 +1,6 @@
 package tests;
 
+import enums.PeriodOfTime;
 import forms.pages.CurrencyPricePage;
 import forms.pages.MainKrakenPage;
 import forms.pages.PricesPage;
@@ -35,7 +36,7 @@ public class GetRandomCurrencyPrice extends BaseTest {
         CurrencyPricePage currencyPricePage = new CurrencyPricePage();
         Assert.assertTrue(currencyPricePage.state().isDisplayed(), "The currency price page is not displayed");
 
-        currencyPricePage.clickTimeSelector(TestData.getStringValue("timeToAnalyze"));
+        currencyPricePage.clickTimeSelector(PeriodOfTime.valueOf(TestData.getStringValue("timeToAnalyze")));
         double lowestPrice = currencyPricePage.getLowestPriceValue();
         double highestPrice = currencyPricePage.getHighestPriceValue();
 
