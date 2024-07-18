@@ -1,5 +1,0 @@
-{
-  "startUrl": "https://www.kraken.com",
-  "apiUrl": "https://api.kraken.com/0/public",
-  "getCurrencyNamePath": "/Assets"
-}
