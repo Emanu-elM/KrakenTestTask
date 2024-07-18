@@ -5,6 +5,7 @@ import aquality.selenium.elements.interfaces.ILabel;
 import aquality.selenium.forms.Form;
 import enums.PeriodOfTime;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import utilities.CurrenciesUtils;
 
 public class CurrencyPricePage extends Form {
@@ -43,5 +44,10 @@ public class CurrencyPricePage extends Form {
 
     public Double getLowestPriceValue() {
         return CurrenciesUtils.extractAmount(lowestPrice.getText());
+    }
+
+    public void verifyPrice(double lowestPrice, double highestPrice, double priceValue){
+        boolean isPriceCorrect = priceValue <= highestPrice && priceValue >= lowestPrice;
+        Assert.assertTrue(isPriceCorrect, "The price is not between the minimum and maximum price values for today ("+ priceValue + " Is not between lowest " + lowestPrice + " and highest " + highestPrice+ " )");
     }
 }

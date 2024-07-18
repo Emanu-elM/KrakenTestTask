@@ -40,6 +40,6 @@ public class GetRandomCurrencyPrice extends BaseTest {
         double lowestPrice = currencyPricePage.getLowestPriceValue();
         double highestPrice = currencyPricePage.getHighestPriceValue();
 
-        Assertions.verifyPrice(lowestPrice, highestPrice, priceValue);
+        currencyPricePage.verifyPrice(lowestPrice, highestPrice, priceValue);
     }
 }
