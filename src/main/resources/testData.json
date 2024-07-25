@@ -1,0 +1,5 @@
+{
+  "cryptoListEndpoint": "/Assets",
+  "currencyToCompare": "USD",
+  "timeToAnalyze": "H24"
+}
